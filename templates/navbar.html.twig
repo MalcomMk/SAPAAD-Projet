@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow">
+            <a class="navbar-brand p-0" href="#">
+                <img src="C:\Users\Malco\Documents\Projet\site projet\assets\images\Logo_V2_copie.png" width="80"
+                    height="70" class="d-inline-block align-top" alt="">
+            </a>
+            <a class="nav-link d-flex justify-content-start text-body" href="#">SAPPAD</a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span bclass="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end mr-4" id="navbarNavAltMarkup">
+                <div class="navbar-nav ">
+                    <a class="nav-link active mx-4" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active mx-4" href="{{ path('login') }}">Login</a>
+                    <a class="nav-link active mx-4" href="{{ path('inscription') }}">inscription</a>
+                    {# <button type="button" href="{{ path('contact') }}" class="btn btn-danger">Contact Now</button> #}
+                    <a href="{{ path('contact') }}" class="btn btn-danger " role="button" aria-pressed="true">Contact Now</a
+                </div>
+            </div>
+        </nav>
