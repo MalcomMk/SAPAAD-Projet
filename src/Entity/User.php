@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -37,6 +39,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Demande::class, mappedBy="user")
+     */
+    private $demande;
+
+    public function __construct()
+    {
+        $this->demande = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -125,5 +137,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Demande[]
+     */
+    public function getDemande(): Collection
+    {
+        return $this->demande;
+    }
+
+    public function addDemande(Demande $demande): self
+    {
+        if (!$this->demande->contains($demande)) {
+            $this->demande[] = $demande;
+            $demande->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemande(Demande $demande): self
+    {
+        if ($this->demande->removeElement($demande)) {
+            // set the owning side to null (unless already changed)
+            if ($demande->getUser() === $this) {
+                $demande->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

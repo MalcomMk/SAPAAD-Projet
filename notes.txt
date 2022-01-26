@@ -1,0 +1,13 @@
+public:
+-presentation : presentationController : Nom
+-catalogue : cataloguePrestation : servises
+-contact : Contact controller : non 
+
+utilisateur inscrit :
+-profil : user 
+-historique de demandes de servises : order
+
+administrateurs : 
+-creation/modif/suppression de servises : Servises
+-M/S d'utilisateur : User
+-M/S de demandes : Order
