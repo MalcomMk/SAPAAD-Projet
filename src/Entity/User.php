@@ -45,6 +45,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $demande;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $service;
+
+    // /**
+    //  * @ORM\Column(type="string", length=255)
+    //  */
+    // private $intervenant;
+
     public function __construct()
     {
         $this->demande = new ArrayCollection();
@@ -168,4 +188,52 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getService(): ?string
+    {
+        return $this->service;
+    }
+
+    public function setService(string $service): self
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    // public function getIntervenant(): ?string
+    // {
+    //     return $this->intervenant;
+    // }
+
+    // public function setIntervenant(string $intervenant): self
+    // {
+    //     $this->intervenant = $intervenant;
+
+    //     return $this;
+    // }
 }

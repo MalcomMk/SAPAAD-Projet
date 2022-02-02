@@ -12,11 +12,27 @@
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end mr-4" id="navbarNavAltMarkup">
                 <div class="navbar-nav ">
-                    <a class="nav-link active mx-4" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
-                    <a class="nav-link active mx-4" href="{{ path('app_login') }}">Login</a>
-                    <a class="nav-link active mx-4" href="{{ path('app_register') }}">inscription</a>
+                        <a class="nav-link active mx-4" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link active mx-4" href="{{ path('app_login') }}">Login</a>
+                        <a class="nav-link active mx-4" href="{{ path('app_register') }}">inscription</a>
+                        {% if is_granted('ROLE_ADMIN')%}
+                    <li class="nav-item dropdown mr-4">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Espace Admin</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('admin_user_index') }}">Gestion des Utilisateur</a>
+                                <a class="dropdown-item" href="{{ path('admin_intervenant_index') }}">Gestion des intervenant</a>
+                                <a class="dropdown-item" href="{{ path('admin_service_index') }}">Gestion des service</a>
+                                <a class="dropdown-item" href="{{ path('admin_devis_index') }}">Gestion des devis</a>
+                                <a class="dropdown-item" href="{{ path('admin_demande_index') }}">Gestion des demandes</a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">autre</a>
+                            </div>
+                    </li>
+                    {% endif %}
 
                     <a href="{{ path('contact') }}" class="btn btn-danger " role="button" aria-pressed="true">Contact Now</a
                 </div>
+                
             </div>
         </nav>
