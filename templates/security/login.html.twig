@@ -13,6 +13,8 @@
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
+<div class = "container">
+
 
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputEmail">Email</label>
@@ -38,5 +40,7 @@
     <button class="btn btn-lg btn-primary" type="submit">
         Sign in
     </button>
+    <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
+    <div/> 
 </form>
 {% endblock %}
