@@ -1,0 +1,30 @@
+.sizeabout{
+    margin-left: 20%;
+
+
+}
+.sizecorect{
+margin: 0px;
+
+}
+.size{
+    padding-right: 50%;
+    padding-left: 50%;
+
+  }   
+  .size2{
+    background-image: url("../images/about-bg.png");
+    /* background-repeat: no-repeat; */
+    /* background-position: center center; */
+    /* background-size: cover; */
+    padding: 140px 0px 120px 0px;
+    margin: 0px; ;
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top
+ ; 
+  }
+
+  .shadow{
+    box-shadow: 10px 5px 5px black;
+  }

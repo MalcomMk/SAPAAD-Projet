@@ -3,10 +3,72 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-Contact
 <div class = "container">
-{{form(formulaire)}}
-<div/> 
+
+<div/> <div class="content space">
+    
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              
+    
+              <div class="row justify-content-center">
+              {# text et image #}
+                <div class="col-md-5">
+                  
+                  <h3 class="login100-form-title p-b-51"> <strong>CONTACT</strong> </h3>
+                  <p></p>
+                    <div class= 'mt-5 ml-5 pl-3'> 
+                  <p><img src="{{ asset('images/contact-decoration.png') }}" alt="Image" class="img-fluid"></p>  
+                    </div>
+                  
+    
+    
+                </div>
+                {# fin text-et-image #}
+                
+                <div class="col-md-6 mt-1">
+                
+                    
+                {# formulaire #}
+                  {{ form_start(formulaire, {'attr': {'class': 'mb-5'}}) }}
+                    <div class="row">
+                      <div class="col-md-12 form-group">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Your name">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 form-group">
+                        {{ form_widget(formulaire.email) }}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 form-group">
+                        {{ form_widget(formulaire.subject) }}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 form-group">
+                        {{ form_widget(formulaire.message) }}
+                      </div>
+                    </div>  
+                    <div class="row">
+                      <div class="col-12">
+                        {{ form_widget(formulaire.send, { 'label': 'Envoyer' }) }}
+                      <span class="submitting rond"></span>
+                      </div>
+                    </div>
+                  {{ form_end(formulaire) }}
+                {# fin formulmaire #}
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+        
 
 
 {% endblock %}

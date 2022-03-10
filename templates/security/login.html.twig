@@ -1,6 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
+ {% block stylesheets %}
+ 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+            <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}"> 
+             <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+             <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+             <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}"> 
+ {% endblock %}
 
 {% block body %}
 <form method="post">
@@ -8,39 +21,75 @@
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
+
     {% if app.user %}
         <div class="mb-3">
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
 <div class = "container">
+           <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-50 p-b-90 spaceplus">
+				<form class="login100-form validate-form flex-sb flex-w">
+					<span class="login100-form-title p-b-51">
+						Login
+					</span>
 
+					
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Username" required autofocus >
+						<span class="focus-input100"></span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+						<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+						<span class="focus-input100"></span>
+					</div>
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+					<input type="hidden" name="_csrf_token"
+					value="{{ csrf_token('authenticate') }}"
+					 >
+					
+					<div class="flex-sb-m w-full p-t-3 p-b-24">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								Remember me
+							</label>
+						</div>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+						<div>
+							<a href="{{ path('app_forgot_password_request') }}" class="txt1">
+								Forgot?
+							</a>
+						</div>
+					</div>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+					<div class="container-login100-form-btn m-t-17">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
+				</form>
+			</div>
+		</div>
+	</div>
+	
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-    <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
-    <div/> 
 </form>
 {% endblock %}
+{% block javascripts %}
+            <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+            <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+            <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+            <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+            <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+            <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+            <script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
+

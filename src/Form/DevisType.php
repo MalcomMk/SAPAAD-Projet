@@ -14,7 +14,11 @@ class DevisType extends AbstractType
         $builder
             ->add('prix')
             ->add('creation')
+            ->add('heure')
+            ->add('details')
             ->add('intervenants')
+            ->add('services')
+            ->add('user')
         ;
     }
 

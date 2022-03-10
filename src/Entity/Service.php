@@ -25,14 +25,35 @@ class Service
     private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Demande::class, mappedBy="demandes")
+     * @ORM\ManyToMany(targetEntity=Demande::class, mappedBy="services")
      */
     private $demandes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Devis::class, mappedBy="services")
+     */
+    private $devis;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $illustration;
 
     public function __construct()
     {
         $this->demandes = new ArrayCollection();
+        $this->devis = new ArrayCollection();
     }
+
+    public function __toString(){
+        return $this->getNom();
+    }
+
 
     public function getId(): ?int
     {
@@ -63,7 +84,7 @@ class Service
     {
         if (!$this->demandes->contains($demande)) {
             $this->demandes[] = $demande;
-            $demande->addDemande($this);
+            $demande->addService($this);
         }
 
         return $this;
@@ -72,9 +93,61 @@ class Service
     public function removeDemande(Demande $demande): self
     {
         if ($this->demandes->removeElement($demande)) {
-            $demande->removeDemande($this);
+            $demande->removeService($this);
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Devis[]
+     */
+    public function getDevis(): Collection
+    {
+        return $this->devis;
+    }
+
+    public function addDevi(Devis $devi): self
+    {
+        if (!$this->devis->contains($devi)) {
+            $this->devis[] = $devi;
+            $devi->addService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDevi(Devis $devi): self
+    {
+        if ($this->devis->removeElement($devi)) {
+            $devi->removeService($this);
+        }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(?string $illustration): self
+    {
+        $this->illustration = $illustration;
+
+        return $this;
+    }
+
 }

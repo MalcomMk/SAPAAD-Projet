@@ -22,48 +22,114 @@ class Demande
     /**
      * @ORM\Column(type="datetime")
      */
-    private $creation;
+    private $date_demande;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Intervenant::class, inversedBy="demandes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $intervenant;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $heure;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $details;
+
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $status;
 
     /**
      * @ORM\ManyToMany(targetEntity=Service::class, inversedBy="demandes")
      */
-    private $demandes;
+    private $services;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="demande")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="demandes")
      */
     private $user;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $precisions;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Devis::class, inversedBy="demandes")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $devis;
-
     public function __construct()
     {
-        $this->demandes = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
+    
+    public function __toString(){
+         return $this->getId()
+     ;
+
+    }
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCreation(): ?\DateTimeInterface
+    public function getDateDemande(): ?\DateTimeInterface
     {
-        return $this->creation;
+        return $this->date_demande;
     }
 
-    public function setCreation(\DateTimeInterface $creation): self
+    public function setDateDemande(\DateTimeInterface $date_demande): self
     {
-        $this->creation = $creation;
+        $this->date_demande = $date_demande;
+
+        return $this;
+    }
+
+    public function getIntervenant(): ?Intervenant
+    {
+        return $this->intervenant;
+    }
+
+    public function setIntervenant(?Intervenant $intervenant): self
+    {
+        $this->intervenant = $intervenant;
+
+        return $this;
+    }
+
+    public function getHeure(): ?int
+    {
+        return $this->heure;
+    }
+
+    public function setHeure(?int $heure): self
+    {
+        $this->heure = $heure;
+
+        return $this;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(?string $details): self
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+
+    public function getStatus(): ?int
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
@@ -71,23 +137,23 @@ class Demande
     /**
      * @return Collection|Service[]
      */
-    public function getDemandes(): Collection
+    public function getServices(): Collection
     {
-        return $this->demandes;
+        return $this->services;
     }
 
-    public function addDemande(Service $demande): self
+    public function addService(Service $service): self
     {
-        if (!$this->demandes->contains($demande)) {
-            $this->demandes[] = $demande;
+        if (!$this->services->contains($service)) {
+            $this->services[] = $service;
         }
 
         return $this;
     }
 
-    public function removeDemande(Service $demande): self
+    public function removeService(Service $service): self
     {
-        $this->demandes->removeElement($demande);
+        $this->services->removeElement($service);
 
         return $this;
     }
@@ -104,27 +170,4 @@ class Demande
         return $this;
     }
 
-    public function getPrecisions(): ?string
-    {
-        return $this->precisions;
-    }
-
-    public function setPrecisions(?string $precisions): self
-    {
-        $this->precisions = $precisions;
-
-        return $this;
-    }
-
-    public function getDevis(): ?Devis
-    {
-        return $this->devis;
-    }
-
-    public function setDevis(?Devis $devis): self
-    {
-        $this->devis = $devis;
-
-        return $this;
-    }
 }

@@ -35,14 +35,30 @@ class Devis
     private $intervenants;
 
     /**
-     * @ORM\OneToMany(targetEntity=Demande::class, mappedBy="devis")
+     * @ORM\Column(type="integer")
      */
-    private $demandes;
+    private $heure;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $details;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="devis")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Service::class, inversedBy="devis")
+     */
+    private $services;
+
 
     public function __construct()
     {
         $this->intervenants = new ArrayCollection();
-        $this->demandes = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -98,33 +114,64 @@ class Devis
         return $this;
     }
 
+    public function getHeure(): ?int
+    {
+        return $this->heure;
+    }
+
+    public function setHeure(?int $heure): self
+    {
+        $this->heure = $heure;
+
+        return $this;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(?string $details): self
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
     /**
-     * @return Collection|Demande[]
+     * @return Collection|Service[]
      */
-    public function getDemandes(): Collection
+    public function getServices(): Collection
     {
-        return $this->demandes;
+        return $this->services;
     }
 
-    public function addDemande(Demande $demande): self
+    public function addService(Service $service): self
     {
-        if (!$this->demandes->contains($demande)) {
-            $this->demandes[] = $demande;
-            $demande->setDevis($this);
+        if (!$this->services->contains($service)) {
+            $this->services[] = $service;
         }
 
         return $this;
     }
 
-    public function removeDemande(Demande $demande): self
+    public function removeService(Service $service): self
     {
-        if ($this->demandes->removeElement($demande)) {
-            // set the owning side to null (unless already changed)
-            if ($demande->getDevis() === $this) {
-                $demande->setDevis(null);
-            }
-        }
+        $this->services->removeElement($service);
 
         return $this;
     }
+
 }

@@ -1,0 +1,19 @@
+/* navbar */
+.navbar-light .navbar-nav .nav-link {
+    color:#3CA23C;
+   -webkit-transition: color 1s;
+   transition: color 1s;
+   font-weight: 600;
+   font-size:medium ;
+ }
+ 
+ .navbar-light .navbar-nav .nav-link:hover {
+   color: #E45F00 ;
+   font-weight: 600;
+  
+ }
+ .rond {
+   border-radius: 100px;
+
+ 
+ }

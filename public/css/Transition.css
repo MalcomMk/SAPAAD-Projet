@@ -1,0 +1,15 @@
+.transition{
+background: rgb(255,77,30);
+    background: linear-gradient(
+105deg
+, rgba(255,77,30,1) 0%, rgba(255,44,109,1) 100%);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    opacity :0;
+    top: 0;
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    transition: all 0.5s;
+}
