@@ -5,40 +5,41 @@
     <link rel="stylesheet" href="{{ asset('registerform/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('registerform/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
 {% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    
 
      <div class="main">
 
         <section class="signup" >
             <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
-                <div class="signup-content" >
+                <div class="signup-content mt-5" >
                     {# <form method="POST" id="signup-form" class="signup-form"> #}
                     {{ form_start(registrationForm) }}
-                        <h2 class="form-title">Create account</h2>
+                        <h1 class="d-flex justify-content-center mb-5 color">Inscription</h1>
                         
-                         <div class="form-group">
+                         <div class="col-md-12 form-group">
                              {{ form_widget(registrationForm.email) }}
                         </div>
                         
-                        <div class="form-group">
+                        <div class="col-md-12 form-group">
                             {{ form_widget(registrationForm.nom) }}
                         </div>
                          
-                         <div class="form-group">
+                         <div class="col-md-12 form-group">
                             {{ form_widget(registrationForm.prenom) }}
                         </div>
                         
-                         <div class="form-group">
+                         <div class="col-md-12 form-group">
                             {{ form_widget(registrationForm.adresse) }}
                         </div>
                        
                     
-                        <div class="form-group">
+                        <div class="col-md-12 form-group">
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                             
                             {{ form_widget(registrationForm.password) }}
@@ -50,8 +51,8 @@
                              {{ form_row(registrationForm.agreeTerms) }}
                             <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                         </div> #}
-                        <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                        <div class="form-group mt-5">
+                            <input type="submit" name="submit" id="submit" class="login100-form-btn rounded-3 py-2 px-4" value="Sign up"/>
                         </div>
                          {{ form_end(registrationForm) }}
                     <p class="loginhere">

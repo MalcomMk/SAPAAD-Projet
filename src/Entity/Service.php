@@ -44,6 +44,11 @@ class Service
      */
     private $illustration;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $shortcut_name;
+
     public function __construct()
     {
         $this->demandes = new ArrayCollection();
@@ -146,6 +151,18 @@ class Service
     public function setIllustration(?string $illustration): self
     {
         $this->illustration = $illustration;
+
+        return $this;
+    }
+
+    public function getShortcutName(): ?string
+    {
+        return $this->shortcut_name;
+    }
+
+    public function setShortcutName(string $shortcut_name): self
+    {
+        $this->shortcut_name = $shortcut_name;
 
         return $this;
     }

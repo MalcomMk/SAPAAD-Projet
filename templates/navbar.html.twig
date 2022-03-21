@@ -14,16 +14,17 @@
                 <div class="navbar-nav ">
                         <a class="nav-link mx-4" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
                         <a class="nav-link mx-4" href="{{ path('catalog_index') }}">Catalogue</a>
-                        <a class="nav-link mx-4" href="{{ path('user_devis_index') }}">Devis</a>
-                        <a class="nav-link mx-4" href="{{ path('contact') }}">Contact Now</a>
-
+                        {% if is_granted('ROLE_USER')%}  
+                            <a class="nav-link mx-4" href="{{ path('user_devis_index') }}">Devis</a>
+                        {% endif %}
+                        <a class="nav-link mx-4" href="{{ path('contact') }}">Contact Now</a> 
+                        {% if is_granted('ROLE_ADMIN')%}
+                            <li class="nav-item dropdown mr-4">
+                                    <a class="nav-link mx-4" href="{{ path('admin') }}">Espace Admin</a>
+                            </li>
+                        {% endif %}
                         
                         
-                    {% if is_granted('ROLE_ADMIN')%}
-                        <li class="nav-item dropdown mr-4">
-                                <a class="nav-link mx-4" href="{{ path('admin') }}">Espace Admin</a>
-                        </li>
-                    {% endif %}
 
                         {% if app.user %}
                             <li class="nav-item dropdown">
@@ -31,7 +32,9 @@
                                     Mon compte
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{path('account')}}">Profile</a>
+                                {% if not is_granted('ROLE_ADMIN') %}
+                                 <a class="dropdown-item" href="{{path('account')}}">Profile</a>
+                                {% endif %}
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
                                 </div>
@@ -40,6 +43,8 @@
                             <a  href="{{ path('app_register') }}" class="nav-link mx-4">Inscription</a>
                             <a  href="{{ path('app_login') }}" class="nav-link mx-4">Connexion</a> 
                         {% endif %}
+
+           
                     
                     
                    

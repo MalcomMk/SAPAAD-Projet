@@ -31,7 +31,10 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('SAPAAD Projet');
+            //->setTitle('SAPAAD Projet')
+            ->setTitle('<img src="images/Logo_V2_copie.png">')
+            ->setFaviconPath('http://localhost.fr');
+            
     }
 
     public function configureMenuItems(): iterable

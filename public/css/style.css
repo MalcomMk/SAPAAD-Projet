@@ -6,10 +6,10 @@ html {
 } */
 body, html {
 	height: 100%;
-	font-family: "Varela Round", sans-serif !important;
+	font-family: "Ubuntu-Bold", sans-serif !important;
 }
 p {
-  font-family: "Varela Round", sans-serif !important;
+  font-family: "Ubuntu-Bold", sans-serif !important;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -119,9 +119,13 @@ label.error {
 /* carousel home */
 .jumbotron {
   background-color: transparent!important;
-  color: black;
+  color: white;
+  
 }
 
+.shadow2 {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+}
 
 /* contact */
 .space{
@@ -129,7 +133,7 @@ label.error {
 }
 /* Toute page */
 .font{
- font-family: Ubuntu-Regular!important;
+ font-family: Ubuntu-Bold!important;
 font-size: 16px; 
 }
 .color{

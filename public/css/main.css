@@ -26,12 +26,12 @@
 
 body, html {
 	height: 100%;
-  font-family: "Varela Round", sans-serif !important;
+  font-family: "Ubuntu-Bold", sans-serif !important;
 }
 
 /*---------------------------------------------*/
 a {
-	/* font-family: Ubuntu-Regular; */
+	font-family: Ubuntu-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -48,7 +48,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #403866;
+  color: #E45F00;
 }
 
 /*---------------------------------------------*/
@@ -60,7 +60,7 @@ p {
 	font-family: Ubuntu-Regular;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
+	color: black;
 	margin: 0px;
 }
 
@@ -352,8 +352,9 @@ iframe {
 }
 
 .login100-form-btn:hover {
-  background-color: #403866;
+  background-color: #E45F00;
 }
+
 
 
 /*------------------------------------------------------------------
@@ -426,3 +427,7 @@ iframe {
 
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
+.btn:hover {
+  color: #FFF!important;
+  text-decoration: none;
+}

@@ -33,14 +33,20 @@ class DemandeType extends AbstractType
                 'required'=>true,
                 'class'=> Intervenant::class,
                 'multiple'=>false,
-                'expanded' =>true
+                'expanded' =>false
             ])
             ->add('services',EntityType::class,[
                 'label'=>'Choissisez votre service',
+                'attr'=>[
+                    'class'=>'form-check form-switch'
+                ],
                 'required'=>true,
                 'class'=> Service::class,
                 'multiple'=>true,
                 'expanded' =>true,
+                'choice_label' => function ($category) {
+                    return $category->getShortcutName();
+                },
             ])
             ->add('submit',SubmitType::class,[
                 'label'=>'Envoyer'

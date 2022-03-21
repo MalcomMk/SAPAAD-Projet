@@ -30,12 +30,13 @@
 				<div class="col-lg-8">
 					<div class="card">
 						<div class="card-body">
+							{{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
 							<div class="row mb-3">
 								<div class="col-sm-3">
 									<h6 class="mb-0">Nom</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value={{user.nom}}>
+									<input type="text" class="form-control" id="{{ form.children.nom.vars.id }}" name="{{ form.children.nom.vars.full_name }}" value="{{user.nom}}">
 								</div>
 							</div>
 							
@@ -44,7 +45,7 @@
 									<h6 class="mb-0">Prenom</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value={{user.prenom}}>
+									<input type="text" class="form-control" id="{{ form.children.prenom.vars.id }}" name="{{ form.children.prenom.vars.full_name }}" value="{{user.prenom}}">
 								</div>
 							</div>
 
@@ -53,7 +54,8 @@
 									<h6 class="mb-0">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value={{user.email}}>
+									<input type="text" class="form-control" id="{{ form.children.email.vars.id }}" name="{{ form.children.email.vars.full_name }}" value="{{user.email}}">
+
 								</div>
 							</div>
 							
@@ -62,32 +64,59 @@
 									<h6 class="mb-0">Address</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value= {{user.adresse}} >
+									<input type="text" class="form-control" id="{{ form.children.adresse.vars.id }}" name="{{form.children.adresse.vars.full_name }}" value="{{user.adresse}}">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="Save Changes">
+									{{ form_row(form.submit, { 'attr': {'class': 'login100-form-btn rounded-3 py-2 px-4'} }) }}
 								</div>
 							</div>
+							{{ form_row(form._token) }}
+							{{ form_end(form, {render_rest: false}) }}
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
-									<h5 class="d-flex align-items-center mb-3">Project Status</h5>
+									<h2 class="d-flex align-items-center mb-3">Historique</h2>
 									<div class="list-group">
                                     {% for demande in user.demandes  %}
-                                        {# {{dump(demande.details)}} #}
+
+										{#{{ dump(demande.dateDemande|date("d/m/Y")) }}
+										{{ dump(demande.getIntervenant.getNom) }}
+										{{ dump(demande.heure) }}#}
                                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">{{demandes.servises}}</h5>
-                                            <small>{{demandes.date_demande}}</small>
-                                            </div>
-                                            <p class="mb-1">{{demandes.details}}</p>
-                                            <small>{{demandes.heure}}</small>
+
+
+												<div class="d-flex w-100 justify-content-between">
+													<h5 class="mb-1"><strong>Services :</strong></h5>
+													<ul>
+
+														{% for service in demande.services %}
+															<li>{{service.nom}}</li>
+														{% endfor %}
+
+													</ul>
+
+													<small>{{demande.dateDemande|date("d/m/Y")}}</small>
+												</div>
+											<h5 class="mb-1"><strong>Intervenant </strong>:</h5>
+
+											<ul>
+												<li>
+													{{demande.getIntervenant.getNom}}
+												</li>
+											</ul>
+
+
+												<h5 class="mb-1"><strong>Heure de l'intervention</strong></h5>
+												<small>{{demande.heure}} <strong>heure(s)</strong> </small>
+
+
+
                                         </a>
                                     {% endfor %}
                                     </div>

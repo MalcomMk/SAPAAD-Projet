@@ -19,6 +19,7 @@ class DevisType extends AbstractType
             ->add('intervenants')
             ->add('services')
             ->add('user')
+            
         ;
     }
 

@@ -38,7 +38,6 @@ class ContactType extends AbstractType
             ->add('send',SubmitType::class,[
                 'attr'=> [
                     'placeholder'=>'Envoyer',
-                    'class'=>'login100-form-btn rounded-3 py-2 px-4'
                 ]
             ] )
         ;
