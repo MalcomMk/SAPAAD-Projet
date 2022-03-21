@@ -32,7 +32,7 @@ class UserCrudController extends AbstractCrudController
                 'ROLE_INTERVENANT'=>'ROLE_INTERVENANT'
             ])
                 ->allowMultipleChoices(),
-            TextField::new('password'),
+            TextField::new('password')->hideOnIndex(),
             TextField::new('adresse'),
             AssociationField::new('intervenant')->setCrudController(IntervenantCrudController::class),
            
