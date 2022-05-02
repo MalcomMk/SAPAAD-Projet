@@ -12,10 +12,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-#[AsCommand(
-    name: 'sapaad:init:service',
-    description: 'Add a short description for your command',
-)]
+#[AsCommand(name: 'sapaad:init:service', description: 'Add a short description for your command')]
 class SapaadInitServiceCommand extends Command
 {
     private $entityManager;
